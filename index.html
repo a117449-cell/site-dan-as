@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dance Academy</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <a href="#apresentacao" class="logo">💃 Dance<span>Academy</span></a>
+    <nav>
+      <ul>
+        <li><a href="#apresentacao">Apresentação</a></li>
+        <li><a href="#modalidades">Modalidades</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <button id="btnEscuro" class="btn-escuro" onclick="modoEscuro()">🌙 Modo escuro</button>
+  </header>
+
+  <main>
+    <section id="apresentacao" class="hero">
+      <div class="hero-conteudo">
+        <span class="etiqueta">Aulas para todas as idades</span>
+        <h2>Dança com paixão,<br>aprende ao teu ritmo</h2>
+        <p>A Dance Academy oferece aulas para todos os níveis, com professores experientes e um ambiente acolhedor onde cada passo conta.</p>
+        <div class="botoes">
+          <button onclick="mostrarMensagem()">Obrigado pela visita</button>
+          <button class="secundario" onclick="mudarCor()">🎨 Mudar cor de fundo</button>
+        </div>
+        <p id="contador" class="contador">Visitas: 0</p>
+      </div>
+    </section>
+
+    <section id="frases" class="reveal">
+      <div class="caixa-frase">
+        <span class="aspas">“</span>
+        <blockquote id="frase">Clica em "Inspira-me" para ver uma frase.</blockquote>
+        <button onclick="novaFrase()">Inspira-me ✨</button>
+      </div>
+    </section>
+
+    <section id="modalidades">
+      <h2 class="reveal">Modalidades</h2>
+      <p class="subtitulo reveal">Encontra o estilo que mais combina contigo.</p>
+      <div class="cartoes">
+        <article class="cartao reveal">
+          <div class="icone">🎤</div>
+          <h3>Hip-Hop</h3>
+          <p>Energia, ritmo e estilo urbano.</p>
+        </article>
+        <article class="cartao reveal">
+          <div class="icone">🩰</div>
+          <h3>Ballet</h3>
+          <p>Técnica, postura e elegância.</p>
+        </article>
+        <article class="cartao reveal">
+          <div class="icone">💃</div>
+          <h3>Salsa</h3>
+          <p>Dança a pares cheia de alegria.</p>
+        </article>
+        <article class="cartao reveal">
+          <div class="icone">🤸‍♀️</div>
+          <h3>Contemporâneo</h3>
+          <p>Expressão livre e criatividade.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="galeria">
+      <h2 class="reveal">Galeria</h2>
+      <p class="subtitulo reveal">Momentos das nossas aulas e espetáculos.</p>
+      <div class="galeria">
+        <figure class="reveal">
+          <img src="https://media.istockphoto.com/id/2152164016/photo/group-of-teenagers-boys-in-casual-attire-dancing-in-freestyle-in-mixed-neon-light-against.jpg?s=612x612&w=0&k=20&c=qgFA3-ZHZ6oAezimyouATddfCsmy3uYWahIpyuhg_xE=" alt="Aula de dança 1">
+          <figcaption>Hip-Hop</figcaption>
+        </figure>
+        <figure class="reveal">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmlizV-uADBgdrPUDHN0BEmihg_R58tGPW5ioJaLApIk7haOtiKxRk5bk&s=10" alt="Aula de dança 2"> 
+          <figcaption>Ballet</figcaption>
+        </figure>
+        <figure class="reveal">
+          <img src="https://img.magnific.com/fotos-gratis/um-casal-de-amadores-a-dancar-salsa-juntos_23-2151082181.jpg" alt="Aula de dança 3"> 
+          <figcaption>Salsa</figcaption>
+        </figure>
+        <figure class="reveal">
+          <img src="https://static.significados.com.br/foto/danca-contemporanea-og.jpg?class=ogImageWide" alt="Aula de dança 4">
+          <figcaption>Contemporâneo</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <h2 class="reveal">Contacto</h2>
+      <p class="subtitulo reveal">Faz a tua inscrição ou tira as tuas dúvidas.</p>
+      <form id="formContacto" class="reveal" onsubmit="enviarFormulario(event)">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" placeholder="O teu nome" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="exemplo@email.pt" required>
+
+        <label for="modalidade">Modalidade de interesse</label>
+        <select id="modalidade" name="modalidade">
+          <option>Hip-Hop</option>
+          <option>Ballet</option>
+          <option>Salsa</option>
+          <option>Contemporâneo</option>
+        </select>
+
+        <label for="mensagem">Mensagem</label>
+        <textarea id="mensagem" name="mensagem" rows="4" placeholder="Escreve aqui a tua mensagem..." required></textarea>
+
+        <button type="submit">Enviar mensagem</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p class="logo-rodape">💃 Dance<span>Academy</span></p>
+    <p>Rua da Dança, 123 · Porto · info@danceacademy.pt</p>
+    <p class="direitos">© 2026 Dance Academy. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
