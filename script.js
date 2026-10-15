@@ -38,7 +38,7 @@ function contarVisita() {
 }
 contarVisita();
 
-/* ---------- Frases (mudam sozinhas + botão) ---------- */
+/* ---------- Frases (mudam sozinhas) ---------- */
 const frases = [
   "A dança é a linguagem escondida da alma.",
   "Dançar é sonhar com os pés.",
@@ -48,7 +48,7 @@ const frases = [
 ];
 
 const INTERVALO_FRASE = 5000; // milissegundos (5 segundos)
-let ultimoIndice = -1;
+let ultimoIndice = 0; // a frase inicial do HTML é a de índice 0
 
 function novaFrase() {
   const el = document.getElementById("frase");
@@ -66,17 +66,7 @@ function novaFrase() {
   }, 400);
 }
 
-let temporizador = setInterval(novaFrase, INTERVALO_FRASE);
-
-// Chamada pelo botão "Inspira-me": muda a frase e reinicia o temporizador
-function cliqueFrase() {
-  novaFrase();
-  clearInterval(temporizador);
-  temporizador = setInterval(novaFrase, INTERVALO_FRASE);
-}
-
-// Mostra uma frase logo ao carregar a página
-novaFrase();
+setInterval(novaFrase, INTERVALO_FRASE);
 
 /* ---------- Animação ao fazer scroll ---------- */
 const observador = new IntersectionObserver((entradas) => {
