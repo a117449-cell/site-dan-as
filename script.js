@@ -4,6 +4,7 @@ function mostrarMensagem() {
   alert("Obrigado pela sua visita!");
 }
 
+/* ---------- Mudar cor de fundo ---------- */
 const cores = ["#dbeafe", "#fce7f3", "#dcfce7", "#fef9c3", "#faf5ff"];
 let indiceCor = 0;
 
@@ -12,6 +13,7 @@ function mudarCor() {
   indiceCor = (indiceCor + 1) % cores.length;
 }
 
+/* ---------- Modo escuro ---------- */
 function modoEscuro() {
   document.body.classList.toggle("dark");
   document.body.style.backgroundColor = "";
@@ -26,6 +28,7 @@ if (localStorage.getItem("modoEscuro") === "true") {
   document.getElementById("btnEscuro").textContent = "☀️ Modo claro";
 }
 
+/* ---------- Contador de visitas ---------- */
 let visitas = Number(localStorage.getItem("visitas")) || 0;
 
 function contarVisita() {
@@ -35,6 +38,7 @@ function contarVisita() {
 }
 contarVisita();
 
+/* ---------- Frases (mudam sozinhas + botão) ---------- */
 const frases = [
   "A dança é a linguagem escondida da alma.",
   "Dançar é sonhar com os pés.",
@@ -43,11 +47,38 @@ const frases = [
   "Cada passo conta, continua a dançar!"
 ];
 
+const INTERVALO_FRASE = 5000; // milissegundos (5 segundos)
+let ultimoIndice = -1;
+
 function novaFrase() {
-  const indice = Math.floor(Math.random() * frases.length);
-  document.getElementById("frase").textContent = frases[indice];
+  const el = document.getElementById("frase");
+  el.classList.add("some"); // fade out
+
+  setTimeout(() => {
+    let indice;
+    do {
+      indice = Math.floor(Math.random() * frases.length);
+    } while (indice === ultimoIndice); // não repete a frase anterior
+    ultimoIndice = indice;
+
+    el.textContent = frases[indice];
+    el.classList.remove("some"); // fade in
+  }, 400);
 }
 
+let temporizador = setInterval(novaFrase, INTERVALO_FRASE);
+
+// Chamada pelo botão "Inspira-me": muda a frase e reinicia o temporizador
+function cliqueFrase() {
+  novaFrase();
+  clearInterval(temporizador);
+  temporizador = setInterval(novaFrase, INTERVALO_FRASE);
+}
+
+// Mostra uma frase logo ao carregar a página
+novaFrase();
+
+/* ---------- Animação ao fazer scroll ---------- */
 const observador = new IntersectionObserver((entradas) => {
   entradas.forEach((entrada) => {
     if (entrada.isIntersecting) {
@@ -59,6 +90,7 @@ const observador = new IntersectionObserver((entradas) => {
 
 document.querySelectorAll(".reveal").forEach((el) => observador.observe(el));
 
+/* ---------- Formulário de contacto ---------- */
 function enviarFormulario(evento) {
   evento.preventDefault();
   const nome = document.getElementById("nome").value;
