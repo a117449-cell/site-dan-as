@@ -207,12 +207,17 @@ button:active { transform: translateY(0); }
   border: 2px solid #fff;
 }
 
+/* ---------- Caixa da frase (centrada) ---------- */
 .caixa-frase {
   position: relative;
   background: var(--cartao);
   border-radius: 20px;
   box-shadow: var(--sombra);
-  padding: 3rem 2rem 2.2rem;
+  padding: 3rem 2rem;
+  min-height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   border-top: 5px solid var(--cor-secundaria);
 }
@@ -233,9 +238,13 @@ blockquote {
   font-family: "Playfair Display", Georgia, serif;
   font-size: 1.6rem;
   font-style: italic;
-  margin-bottom: 1.6rem;
-  min-height: 3.4rem;
+  margin: 0;
+  max-width: 700px;
+  text-align: center;
+  transition: opacity 0.4s;
 }
+
+blockquote.some { opacity: 0; }
 
 .cartoes {
   display: grid;
